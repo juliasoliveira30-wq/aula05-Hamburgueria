@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Burgers</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            fontFamily: {
+                barlow: ['Barlow', 'sans-serif'],
+            },
+            colors: {
+                primary: '#f97316',
+                dark: '#1f2937'
+            }
+        }
+    }
+}
+</script>
+
+</head>
+
+<body class="font-barlow text-gray-800">
+
+<header class="flex items-center justify-between px-6 mt-[5vh]">
+
+    <h1 class="text-2xl font-bold text-primary">
+        🍔 Burger Station
+    </h1>
+
+    <button id="menuBtn" class="md:hidden text-3xl">
+        ☰
+    </button>
+
+    <nav class="hidden md:block">
+        <ul class="flex gap-8 text-lg">
+            <li><a href="#cardapio" class="hover:text-primary transition">Cardápio</a></li>
+            <li><a href="#contato" class="hover:text-primary transition">Contato</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- MENU MOBILE -->
+<div id="mobileMenu"
+     class="fixed top-0 right-[-100%] w-[70%] h-full bg-white shadow-lg transition-all duration-300 p-8 md:hidden z-50">
+
+    <button id="closeBtn" class="text-2xl mb-6">✕</button>
+
+    <ul class="flex flex-col gap-6 text-lg">
+        <li><a href="#cardapio" class="hover:text-primary">Cardápio</a></li>
+        <li><a href="#contato" class="hover:text-primary">Contato</a></li>
+    </ul>
+
+</div>
+
+<section class="text-center p-8">
+
+    <div class="md:flex md:items-center md:justify-center md:gap-10">
+
+        <article class="md:w-[45%]">
+
+            <h1 class="text-2xl md:text-4xl font-semibold">
+                Os melhores hambúrgueres artesanais da cidade
+            </h1>
+
+            <a href="#cardapio"
+               class="inline-block mt-4 px-8 py-4 border border-gray-800 rounded-xl text-lg min-h-[48px] hover:bg-primary hover:text-white transition">
+                Ver Cardápio
+            </a>
+
+        </article>
+
+        <figure class="md:w-[45%] mt-6 md:mt-0">
+            <img src="/assets/img/hamburg.jpg"
+                 alt="Hambúrguer"
+                 class="w-[90%] mx-auto rounded-xl">
+        </figure>
+
+    </div>
+
+</section>
+
+<!-- CARDÁPIO -->
+<section id="cardapio"
+         class="max-w-[90vw] mx-auto mt-[5vh] p-8">
+
+<h2 class="text-3xl font-bold text-center mb-8">
+Cardápio
+</h2>
+
+<nav class="overflow-x-auto whitespace-nowrap flex gap-2 mt-6 pb-1">
+    <button data-cat="burgers" class="px-4 py-1 rounded-full bg-primary text-white font-bold text-sm btn-cat">Burgers</button>
+    <button data-cat="porcoes" class="px-4 py-1 rounded-full bg-gray-200 text-dark font-bold text-sm btn-cat">Porções</button>
+    <button data-cat="bebidas" class="px-4 py-1 rounded-full bg-gray-200 text-dark font-bold text-sm btn-cat">Bebidas</button>
+    <button data-cat="sobremesas" class="px-4 py-1 rounded-full bg-gray-200 text-dark font-bold text-sm btn-cat">Sobremesas</button>
+</nav>
+
+<!-- CATEGORIAS -->
+
+<div id="cat-burgers" class="categoria-conteudo mt-6">
+    <h3 class="text-primary text-xl font-semibold">Burgers</h3>
+    <p class="mt-2">Classic Burger - R$ 32</p>
+    <p>Cheddar - R$ 35</p>
+    <p>Triple Bacon - R$ 38</p>
+    <p>Double Cheese - R$ 42</p>
+</div>
+
+<div id="cat-porcoes" class="categoria-conteudo hidden mt-6">
+    <h3 class="text-primary text-xl font-semibold">Porções</h3>
+    <p class="mt-2">Batata Frita simples - R$ 18</p>
+     <p>Batata frita com cheddar e bacon - R$ 20</p>
+    <p>Anéis de Cebola - R$ 22</p>
+</div>
+
+<div id="cat-bebidas" class="categoria-conteudo hidden mt-6">
+    <h3 class="text-primary text-xl font-semibold">Bebidas</h3>
+    <p class="mt-2">Refrigerantes - R$ 8</p>
+    <p>Milkshake - R$ 20</p>
+    <p>Água - R$ 6</p>
+</div>
+
+<div id="cat-sobremesas" class="categoria-conteudo hidden mt-6">
+    <h3 class="text-primary text-xl font-semibold">Sobremesas</h3>
+    <p class="mt-2">Brownie - R$ 16</p>
+    <p>Churros - R$ 18</p>
+     <p>Cookie - R$ 10</p>
+      <p>DonutS - R$ 12</p>
+</div>
+
+</section>
+
+<!-- CONTATO -->
+<section id="contato"
+         class="max-w-[90vw] mx-auto mt-[5vh] p-8 text-center">
+
+<h2 class="text-3xl font-bold mb-6">Contato</h2>
+<p>📍 Rua Nova Esperança, 250</p>
+<p>📞 (15) 99854-4123</p>
+<p>🕒 18h às 23h</p>
+
+</section>
+
+<footer class="bg-gray-800 text-white text-center p-12 mt-[5vh]">
+© 2026 Urban Burgers
+</footer>
+
+<script>
+// MENU MOBILE
+const menuBtn = document.getElementById("menuBtn");
+const closeBtn = document.getElementById("closeBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => mobileMenu.style.right = "0");
+closeBtn.addEventListener("click", () => mobileMenu.style.right = "-100%");
+
+// CATEGORIAS
+const botoes = document.querySelectorAll('.btn-cat');
+const conteudos = document.querySelectorAll('.categoria-conteudo');
+const area = document.getElementById('cardapio');
+
+let categorias = ["burgers","porcoes","bebidas","sobremesas"];
+let atual = 0;
+
+function mudarCategoria(cat){
+    atual = categorias.indexOf(cat);
+
+    conteudos.forEach(div=>{
+        div.id === "cat-" + cat
+        ? div.classList.remove("hidden")
+        : div.classList.add("hidden");
+    });
+
+    botoes.forEach(btn=>{
+        btn.dataset.cat === cat
+        ? btn.classList.replace("bg-gray-200","bg-primary")
+        : btn.classList.replace("bg-primary","bg-gray-200");
+    });
+}
+
+
+// TOUCH 
+
+let startX=0, startY=0, endX=0, endY=0;
+
+area.addEventListener("touchstart", e=>{
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    area.classList.add("opacity-80");
+});
+
+area.addEventListener("touchmove", e=>{
+    endX = e.touches[0].clientX;
+    endY = e.touches[0].clientY;
+});
+
+area.addEventListener("touchend", ()=>{
+    area.classList.remove("opacity-80");
+
+    let deltaX = endX - startX;
+    let deltaY = endY - startY;
+
+    if(Math.abs(deltaX)>50 && Math.abs(deltaY)<100){
+        if(deltaX>0){
+            atual = (atual-1+categorias.length)%categorias.length;
+        }else{
+            atual = (atual+1)%categorias.length;
+        }
+        mudarCategoria(categorias[atual]);
+    }
+});
+
+//  Desktop
+
+area.addEventListener("mousedown", e=>{
+    startX = e.clientX;
+    startY = e.clientY;
+});
+
+area.addEventListener("mouseup", e=>{
+    endX = e.clientX;
+    endY = e.clientY;
+
+    let deltaX = endX - startX;
+    let deltaY = endY - startY;
+
+    if(Math.abs(deltaX)>50 && Math.abs(deltaY)<100){
+        if(deltaX>0){
+            atual = (atual-1+categorias.length)%categorias.length;
+        }else{
+            atual = (atual+1)%categorias.length;
+        }
+        mudarCategoria(categorias[atual]);
+    }
+});
+
+// Clique normal
+botoes.forEach(btn=>{
+    btn.addEventListener("click", ()=> mudarCategoria(btn.dataset.cat));
+});
+</script>
+
+</body>
+</html>
